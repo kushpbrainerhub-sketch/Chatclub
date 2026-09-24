@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://chatclub-rouge.vercel.app/sitemap.xml
+Sitemap: https://chatclub-app.vercel.app/sitemap.xml

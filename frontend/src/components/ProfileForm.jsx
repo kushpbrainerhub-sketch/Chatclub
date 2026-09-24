@@ -235,7 +235,9 @@ export default function ProfileForm({
 
         <label className="checkbox">
           <input type="checkbox" checked={agreed} onChange={(e) => setAgreed(e.target.checked)} />
-          <span>I confirm I am 18 or older and agree to be respectful</span>
+          <span>
+            I confirm I am 18 or older and agree to be respectful (<a href="/terms">Terms</a>)
+          </span>
         </label>
         {errors.agreed && <small className="error">{errors.agreed}</small>}
 
@@ -247,6 +249,12 @@ export default function ProfileForm({
           Be respectful. Don't share personal info like phone number or address.
         </p>
       </form>
+
+      <footer className="site-footer">
+        <a href="/about">About &amp; FAQ</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+      </footer>
     </main>
   );
 }

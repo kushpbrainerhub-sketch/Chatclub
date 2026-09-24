@@ -12,5 +12,6 @@ services:
     envVars:
       - key: PYTHON_VERSION
         value: 3.12.7
+      # Websites allowed to call the backend over HTTP (comma separated).
       - key: ALLOWED_ORIGINS
-        sync: false # Render asks you for this: your Vercel URL, e.g. https://chatclub.vercel.app
+        value: https://chatclub-app.vercel.app,https://chatclub-rouge.vercel.app,http://localhost:5173
