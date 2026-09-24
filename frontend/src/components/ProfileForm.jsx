@@ -3,6 +3,7 @@
 
 import { useState } from "react";
 import { COUNTRIES, countryName, flag } from "../countries.js";
+import CountrySelect from "./CountrySelect.jsx";
 
 const USERNAME_PATTERN = /^[A-Za-z0-9_. ]{3,20}$/;
 const VALID_CODES = new Set(COUNTRIES.map((c) => c.code));
@@ -94,7 +95,7 @@ export default function ProfileForm({
     <main className="home">
       <header className="home-header">
         <h1>
-          <span aria-hidden="true">💬</span> Chatclub
+          <span className="brand-mark" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5Z" /><path d="M8 11h8M8 15h4" /></svg></span> Chatclub
         </h1>
         <p className="tagline">Free, anonymous text chat with a random stranger.</p>
         <p className="online">
@@ -104,7 +105,7 @@ export default function ProfileForm({
       </header>
 
       <form className="card" onSubmit={handleSubmit} noValidate>
-        <h2>About you</h2>
+        <div className="section-heading"><div><h2>About you</h2><p>A little introduction goes a long way.</p></div></div>
 
         <label className="field">
           <span>Username</span>
@@ -132,18 +133,7 @@ export default function ProfileForm({
             {errors.age && <small className="error">{errors.age}</small>}
           </label>
 
-          <label className="field grow">
-            <span>Country</span>
-            <select value={profile.country} onChange={(e) => updateProfile("country", e.target.value)}>
-              <option value="">Choose...</option>
-              {COUNTRIES.map((c) => (
-                <option key={c.code} value={c.code}>
-                  {flag(c.code)} {c.name}
-                </option>
-              ))}
-            </select>
-            {errors.country && <small className="error">{errors.country}</small>}
-          </label>
+          <CountrySelect label="Country" value={profile.country} onChange={(value) => updateProfile("country", value)} placeholder="Choose your country" error={errors.country} />
         </div>
 
         <fieldset className="field">
@@ -165,7 +155,7 @@ export default function ProfileForm({
           {errors.gender && <small className="error">{errors.gender}</small>}
         </fieldset>
 
-        <h2>Who you want to meet</h2>
+        <div className="section-heading section-divider"><div><h2>Who you want to meet</h2><p>Find a conversation that feels right.</p></div></div>
 
         {partnerGender && (
           <p className="note">
@@ -198,17 +188,7 @@ export default function ProfileForm({
         </div>
 
         <div className="field">
-          <span className="label">Partner country</span>
-          <select value="" onChange={(e) => addCountry(e.target.value)} aria-label="Add a country">
-            <option value="">
-              {filters.countries.length === 0 ? "Any country (add to narrow down)" : "Add another country..."}
-            </option>
-            {COUNTRIES.filter((c) => !filters.countries.includes(c.code)).map((c) => (
-              <option key={c.code} value={c.code}>
-                {flag(c.code)} {c.name}
-              </option>
-            ))}
-          </select>
+          <CountrySelect label="Partner country" value="" onChange={addCountry} excluded={filters.countries} placeholder={filters.countries.length === 0 ? "Any country · choose to filter" : "Add another country..."} />
           <div className="chips">
             {filters.countries.length === 0 ? (
               <span className="chip chip-any">🌍 Any country</span>
@@ -242,7 +222,7 @@ export default function ProfileForm({
         {errors.agreed && <small className="error">{errors.agreed}</small>}
 
         <button type="submit" className="btn btn-primary btn-big" disabled={!connected}>
-          Start Chatting
+          Start Chatting <span aria-hidden="true">↗</span>
         </button>
 
         <p className="safety">
