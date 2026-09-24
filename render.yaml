@@ -1,0 +1,16 @@
+# Render "Blueprint": tells Render how to run the backend.
+# In Render: New + -> Blueprint -> pick this GitHub repo.
+services:
+  - type: web
+    name: chatclub-backend
+    runtime: python
+    rootDir: backend
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.7
+      - key: ALLOWED_ORIGINS
+        sync: false # Render asks you for this: your Vercel URL, e.g. https://chatclub.vercel.app
