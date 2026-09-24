@@ -3,12 +3,79 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Free, anonymous text chat with random strangers." />
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💬</text></svg>" />
-    <title>Chatclub</title>
+
+    <!-- ===== Basic SEO: what Google shows in search results ===== -->
+    <title>Chatclub – Free Anonymous Chat with Random Strangers</title>
+    <meta
+      name="description"
+      content="Chat instantly with a random stranger from around the world. Free, anonymous, text-only chat. No signup, no login. Filter by country and age. 18+ only."
+    />
+    <meta name="keywords" content="random chat, anonymous chat, chat with strangers, free text chat, stranger chat, online chat" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://chatclub-rouge.vercel.app/" />
+    <!-- Google Search Console: paste your verification tag on the next line -->
+
+    <!-- ===== Icons ===== -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#5b5bf0" />
+
+    <!-- ===== Link previews (WhatsApp, Facebook, Instagram, LinkedIn...) ===== -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Chatclub" />
+    <meta property="og:url" content="https://chatclub-rouge.vercel.app/" />
+    <meta property="og:title" content="Chatclub – Free Anonymous Chat with Random Strangers" />
+    <meta property="og:description" content="Chat instantly with a random stranger. Free, anonymous, no signup. 18+ only." />
+    <meta property="og:image" content="https://chatclub-rouge.vercel.app/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Chatclub – free anonymous text chat with a random stranger" />
+
+    <!-- ===== Link previews on X / Twitter ===== -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Chatclub – Free Anonymous Chat with Random Strangers" />
+    <meta name="twitter:description" content="Chat instantly with a random stranger. Free, anonymous, no signup. 18+ only." />
+    <meta name="twitter:image" content="https://chatclub-rouge.vercel.app/og-image.png" />
+
+    <!-- ===== Structured data: tells Google this is a free web app ===== -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Chatclub",
+        "url": "https://chatclub-rouge.vercel.app/",
+        "description": "Free, anonymous text chat with random strangers. No signup required.",
+        "applicationCategory": "CommunicationApplication",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires JavaScript",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      }
+    </script>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!--
+        Plain text for search engines and for people without JavaScript.
+        React replaces everything inside #root as soon as the app loads.
+      -->
+      <main style="max-width: 640px; margin: 40px auto; padding: 0 16px; font-family: system-ui, sans-serif">
+        <h1>Chatclub – free anonymous chat with random strangers</h1>
+        <p>
+          Chatclub pairs you with a random stranger for a private, text-only conversation.
+          It is free, there is no signup or login, and nothing is saved: when the chat ends, the messages are gone.
+        </p>
+        <h2>How it works</h2>
+        <ol>
+          <li>Pick a username and enter your age, country and gender.</li>
+          <li>Optionally choose which countries and ages you want to meet.</li>
+          <li>Press Start Chatting and get matched in seconds. Press Next to meet someone new.</li>
+        </ol>
+        <p>Chatclub is for adults 18 and over. Be respectful and never share personal details like your phone number or address.</p>
+        <noscript><p><strong>Please turn on JavaScript to start chatting.</strong></p></noscript>
+      </main>
+    </div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

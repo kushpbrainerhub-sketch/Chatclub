@@ -1,0 +1,5 @@
+# Let all search engines read the whole site.
+User-agent: *
+Allow: /
+
+Sitemap: https://chatclub-rouge.vercel.app/sitemap.xml
